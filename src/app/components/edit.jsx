@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import validator from "../utils/validator";
 import TextField from "./common/form/textField";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Edit = () => {
-    const formWrap = document.querySelector(".formWrap");
+    const history = useHistory();
     const dataInitialState = {
         name: "",
         surname: "",
@@ -66,10 +66,11 @@ const Edit = () => {
     const isValid = Object.keys(errors).length === 0;
 
     const handleSubmit = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         if (!validate()) return;
-        formWrap.style.opacity = "0";
+        // formWrap.style.opacity = "0";
         localStorage.setItem("student", JSON.stringify(data));
+        history.push("/card");
     };
 
     return (
@@ -81,7 +82,7 @@ const Edit = () => {
                     <>Создать</>
                 )}
             </h3>
-            <form onSubmit={handleSubmit} action="/card">
+            <form onSubmit={handleSubmit}>
                 <TextField
                     label="Имя"
                     name="name"
