@@ -81,7 +81,7 @@ const Edit = () => {
                     <>Создать</>
                 )}
             </h3>
-            <form onSubmit={handleSubmit} action="/">
+            <form onSubmit={handleSubmit} action="/card">
                 <TextField
                     label="Имя"
                     name="name"
@@ -111,7 +111,7 @@ const Edit = () => {
                     error={errors.portfolio}
                 />
                 {localStorage.getItem("student") && (
-                    <Link to="/">
+                    <Link to="/card">
                         <button className="btn btn-secondary me-2">
                             Назад
                         </button>
